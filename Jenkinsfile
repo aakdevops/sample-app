@@ -42,7 +42,7 @@ pipeline {
                                         ).trim()
                     if ( resp == "200" ) {
                         println "tutum hello world is alive and kicking!"
-                        docker.withRegistry("${env.REGISTRY}", 'docker-hub-entree') {
+                        docker.withRegistry("${env.REGISTRY}", 'docker-auth') {
                             image.push("${GIT_HASH}")
                             if ( "${env.BRANCH_NAME}" == "master" ) {
                                 image.push("LATEST")
