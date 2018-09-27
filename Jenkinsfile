@@ -4,7 +4,7 @@ pipeline {
         timestamps()
     }
     environment {
-        IMAGE = "raspamdocker/osfy"
+        IMAGE = "aaakash/helloworld"
         REGISTRY = "https://registry.hub.docker.com"
     }
     stages {
