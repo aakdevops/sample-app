@@ -12,11 +12,13 @@ pipeline {
             steps {
                 script {
                     env.GIT_HASH = sh(
-                        script: "git show --oneline | head -1 | cut -d' ' -f1",
+                        script: """
+			git show --oneline | head -1 | cut -d' ' -f1
+			sh 'echo ${env.BRANCH_NAME}'
+			""",
                         returnStdout: true
                     ).trim()
                 }
-		    sh 'echo ${env.BRANCH_NAME}'
             }
         }
         stage('build') {
