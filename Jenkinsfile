@@ -44,7 +44,7 @@ pipeline {
                         println "tutum hello world is alive and kicking!"
                         docker.withRegistry("${env.REGISTRY}", 'docker-auth') {
                             image.push("${GIT_HASH}")
-			    println "${env.BRANCH_NAME}"
+			    sh 'echo ${env.BRANCH_NAME}'
                             if ( "${env.BRANCH_NAME}" == "master" ) {
                                 image.push("LATEST")
                             }
