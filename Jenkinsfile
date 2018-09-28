@@ -16,6 +16,7 @@ pipeline {
                         returnStdout: true
                     ).trim()
                 }
+		    sh 'echo ${env.BRANCH_NAME}'
             }
         }
         stage('build') {
@@ -43,8 +44,7 @@ pipeline {
                     if ( resp == "200" ) {
                         println "tutum hello world is alive and kicking!"
                         docker.withRegistry("${env.REGISTRY}", 'docker-auth') {
-                            image.push("${GIT_HASH}")
-			    sh 'echo ${env.BRANCH_NAME}'
+                            image.push("${GIT_HASH}"
                             if ( "${env.BRANCH_NAME}" == "master" ) {
                                 image.push("LATEST")
                             }
