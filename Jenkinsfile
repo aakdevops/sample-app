@@ -1,11 +1,12 @@
 pipeline {
     agent {
-        dockerfile true
+	docker 'openjdk:8-jre'
     }
     stages {
         stage('test') {
             steps {
-                sh 'echo "${env.BRANCH_NAME}"'
+                echo "${env.BRANCH_NAME}"
+		sh 'java -version'
             }
         }
     }
