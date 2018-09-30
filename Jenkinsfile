@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh 'java --version'
+                sh 'echo "${env.BRANCH_NAME}"'
             }
         }
     }
